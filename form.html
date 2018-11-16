@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>실습 2</title>
+  <link rel="stylesheet" type="text/css" href="./theme.css">
+  <script src="./jquery-3.3.1.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+
+      // 회원가입 버튼 클릭
+      $("input[name=regBtn]").click(function(){
+        //유효성 체크할 함수 호출
+        invalidItem();
+      });
+
+      //취소 버튼 클릭
+      $("input[name=clearBtn]").click(function(){
+        $('#userId').focus();
+        // 입력값 초기화
+        clearInput();
+      });
+
+      //유효성 체크할 함수
+      function invalidItem() {
+        // 아이디 체크
+        if($('#userId').val() == '') {
+          alert("아이디를 입력하세요.");
+          $('#userId').focus();
+
+          return false;
+        }
+
+        // 이름 체크
+        if($('#userName').val() == ''){
+          alert("이름을 입력하세요.");
+          $('#userName').focus();
+
+          return false;
+        }
+
+        // 비밀번호 체크
+        if($('#userPassword').val() == ''){
+          alert("비밀번호를 입력하세요");
+          $('userPassword').focus();
+
+          return false;
+        }
+
+        // 비밀번호 확인 체크
+        if ($('#userPasswordConfirm').val() == '') {
+          alert("비밀번호 확인을 입력하세요");
+          $('#userPasswordConfirm').focus();
+
+          return false;
+        }
+
+
+        // 비밀번호, 비밀번호 확인 동일 데이터 검사
+        if ($('#userPasswordConfirm').val() != $('#userPassword').val()) {
+          alert("비밀번호가 일치하지 않습니다.");
+
+          $("input[name=userPassword]").val('');
+          $("input[name=userPasswordConfirm]").val('');
+
+          return false;
+        }
+
+
+
+        alert($('#userName').val() + "님 회원가입을 축하합니다");
+    }
+
+  //입력 데이터 모두 삭제
+  function clearInput(){
+    $('#userId').val('');
+    $('#userName').val('');
+    $('#userPassword').val('');
+    $('#userPasswordConfirm').val('');
+  }
+});
+</script>
+
+</head>
+<body>
+  <h1>jquery를 활용한 form 태그 실습</h1>
+  <table>
+		<thead>
+			<th>항목</th>
+			<th>입력</th>
+		</thead>
+
+    <tr>
+			<td>아이디</td>
+			<td>
+				<input type="text" name="userId" id="userId" placeholder="아이디를 입력하시오." >
+			</td>
+		</tr>
+
+		<tr>
+			<td>이름</td>
+			<td>
+				<input type="text" name="userName" id="userName" placeholder="이름을 입력하시오."
+				 autofocus required>
+			</td>
+		</tr>
+
+    <tr>
+			<td>비밀번호</td>
+			<td>
+				<input type="password" name="userPassword" id="userPassword" placeholder="비밀번호를 입력하시오." >
+			</td>
+		</tr>
+
+    <tr>
+			<td>비밀번호 확인</td>
+			<td>
+				<input type="password" name="userPasswordConfirm" id="userPasswordConfirm" placeholder="비밀번호를 한 번 더 입력하시오.">
+			</td>
+		</tr>
+
+    <tr>
+			<td>
+        <input type="button" name="regBtn" value="회원가입" />
+        <input type="button" name="clearBtn" value="취소" />
+			</td>
+		</tr>
+</body>
+</html>

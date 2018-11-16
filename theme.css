@@ -1,0 +1,22 @@
+body {
+  padding: 20px 20px 20px 20px;
+}
+
+#image {
+  width: 200px;
+  height: 200px;
+}
+
+select {
+  width: 200px;
+  height: 30px;
+  padding-left: 10px;
+  font-size: 18px;
+  color: #006fff;
+  border: 1px solid #006fff;
+  border-radius: 3px;
+}
+
+input[type=text], input[type=password] {
+  width: 200px;
+}
